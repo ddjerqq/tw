@@ -1,0 +1,22 @@
+﻿<button class="@Color.GetClass() px-3 py-2 rounded-md uppercase font-semibold"
+        @onclick="@Callback" @attributes="@AdditionalAttributes">
+    @Text
+</button>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public string Text { get; init; } = default!;
+
+    [Parameter, EditorRequired]
+    public EventCallback Callback { get; init; }
+
+    [Parameter]
+    public ColorVariant Color { get; init; } = ColorVariant.Primary;
+
+    // additional attributes capture all
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+
+}
